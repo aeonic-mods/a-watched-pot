@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "watchedpot",
+  "version": "${version}",
+  "name": "A Watched Pot",
+  "description": "A watched block sometimes ticks.",
+  "authors": [
+    "Aeonic"
+  ],
+  "contact": {
+    "homepage": "https://github.com/aeonic-mods/watchedpot",
+    "sources": "https://github.com/aeonic-mods/watchedpot"
+  },
+  "license": "GNU GPLv3",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "design.aeonic.watchedpot.FabricWatchedPot::initializeCommon"
+    ],
+    "client": [
+      "design.aeonic.watchedpot.FabricWatchedPot::initializeClient"
+    ]
+  },
+  "mixins": [
+    "watchedpot.mixins.json",
+    "watchedpot.fabric.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.12",
+    "fabric": "*",
+    "minecraft": "1.18.2",
+    "java": ">=17"
+  },
+  "suggests": {
+  }
+}
