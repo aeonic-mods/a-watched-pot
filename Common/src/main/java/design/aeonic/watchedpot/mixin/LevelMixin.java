@@ -26,7 +26,6 @@ public abstract class LevelMixin implements LevelAccessor, WatchedBlockGetter {
     @Nullable List<BlockPos> watchedBlocks = null;
 
     @Shadow @Final @Mutable protected List<TickingBlockEntity> blockEntityTickers;
-    @Shadow public abstract ProfilerFiller getProfiler();
     @Shadow private boolean tickingBlockEntities;
     @Shadow @Final private List<TickingBlockEntity> pendingBlockEntityTickers;
 
