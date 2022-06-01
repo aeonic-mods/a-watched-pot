@@ -1,8 +1,14 @@
-# A Watched Pot
+![A Watched Pot Logo](https://raw.githubusercontent.com/aeonic-mods/a-watched-pot/assets/img/logo.png)
 
 A watched pot never boils. A watched furnace never... ticks?
 
 **A Watched Pot** is a fully configurable mod for both Forge and Fabric/Quilt that either stops blocks from ticking when they're looked at or restricts them to only tick when they *are* looked at, based on a block tag. 
+
+Requires [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api) on Fabric/Quilt.
+
+Get the mod:
+* [On Curseforge](https://www.curseforge.com/minecraft/mc-mods/a-watched-pot)
+* [On Modrinth](https://modrinth.com/mod/watched-pot)
 
 ## Usage
 
