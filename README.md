@@ -2,7 +2,7 @@
 
 A watched pot never boils. A watched furnace never... ticks?
 
-**A Watched Pot** is a fully configurable mod for both Forge and Fabric/Quilt that either stops blocks from ticking when they're looked at or restricts them to only tick when they *are* looked at, based on a block tag. 
+**A Watched Pot** is a fully configurable mod for both Neoforge/Forge and Fabric/Quilt that either stops blocks from ticking when they're looked at or restricts them to only tick when they *are* looked at, based on a block tag. 
 
 Requires [Fabric API](https://www.curseforge.com/minecraft/mc-mods/fabric-api) on Fabric/Quilt.
 
@@ -24,4 +24,15 @@ To recap:
 * `use_whitelist=true, invert_behavior=true` - blocks in the whitelist tag will only tick if they are looked at; all other blocks remain unchanged.
 * `use_whitelist=false, invert_behavior=true` - all blocks will only tick if they are looked at, unless they are in the blacklist tag (in which case, again, they remain unchanged).
 
-**On Fabric**, the same options can be set via gamerules (`watchedpot_useWhitelist` and `watchedpot_invertBehavior`) to avoid an extra config dependency. This is unfortunately not quite as robust but it keeps the mod lightweight on both platforms. If you need to set default values (such as for a modpack) you can emulate that behavior with KubeJS and its [GameRulesJS](https://kubejs.com/wiki/kubejs/GameRulesJS/), setting the values you need whenever necessary.
+**On Fabric**, the same options can be set via gamerules (`watchedpot_useWhitelist` and `watchedpot_invertBehavior`) to avoid an extra config dependency. This is unfortunately not quite as robust but it keeps the mod lightweight on both platforms. If you need to set default values (such as for a modpack) you can emulate that behavior with a KubeJS server_script, like so:
+```js
+// For 1.18.2 change the line below to onEvent('server.load', event => {
+ServerEvents.loaded(event => {
+  if (event.server.persistentData.gameRules) return
+  event.server.gameRules.set("watchedpot_useWhitelist", true)
+  event.server.gameRules.set("watchedpot_invertBehavior", false)
+
+  event.server.persistentData.gameRules = true
+})
+```
+You can also use datapacks to achieve the same effect with a .mcfunction running the `/gamerule` command. See the [Minecraft Wiki](https://minecraft.wiki/w/Function_(Java_Edition)) for information on that.
