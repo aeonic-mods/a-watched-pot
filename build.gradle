@@ -1,3 +1,9 @@
+plugins {
+    // Required for NeoGradle https://github.com/jaredlll08/MultiLoader-Template/blob/0f2407562e4769b34c391c7d96eeb20a7680b3d3/build.gradle#L1-L4
+    id "org.jetbrains.gradle.plugin.idea-ext" version "1.1.8"
+    id 'fabric-loom' version '1.6-SNAPSHOT' apply false
+}
+
 subprojects {
 
     apply plugin: 'java'

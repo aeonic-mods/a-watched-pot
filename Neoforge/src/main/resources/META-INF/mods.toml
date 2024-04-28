@@ -1,5 +1,5 @@
 modLoader = "javafml" #mandatory
-loaderVersion = "[49,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+loaderVersion = "[2,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
 license = "GNU GPLv3"
 [[mods]] #mandatory
 modId = "watchedpot" #mandatory
@@ -8,15 +8,17 @@ version = "${file.jarVersion}" #mandatory
 displayName = "A Watched Pot" #mandatory
 authors = "Aeonic" #optional
 description = '''A watched block sometimes ticks.'''
+[[mixins]]
+config="watchedpot.mixins.json"
 [[dependencies.watchedpot]] #optional
-modId = "forge" #mandatory
-mandatory = true #mandatory
-versionRange = "[49,)" #mandatory
+modId = "neoforge" #mandatory
+type = 'required' #mandatory
+versionRange = "[20.4,)" #mandatory
 ordering = "NONE"
 side = "BOTH"
 [[dependencies.watchedpot]]
 modId = "minecraft"
-mandatory = true
+type = 'required'
 versionRange = "[1.20.4]"
 ordering = "NONE"
 side = "BOTH"
