@@ -1,13 +1,7 @@
 plugins {
-    id 'java-library'
-    id 'eclipse'
-    id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.143'
+        id 'net.neoforged.moddev' version '0.1.92'
 }
-
-version = version
-group = group
 
 repositories {
     mavenLocal()
@@ -19,21 +13,27 @@ base {
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
-runs {
-    configureEach {
+neoForge {
+    version = neo_version
 
-        systemProperty 'neoforge.logging.markers', 'REGISTRIES'
-        systemProperty 'neoforge.logging.console.level', 'debug'
-
-        modSource project.sourceSets.main
+    mods {
+        awatchedpot {
+            modSourceSets = [
+                    sourceSets.main,
+                    project(":Common").sourceSets.main
+            ]
+        }
     }
 
-    client {
+    runs {
+        client {
+            client()
+        }
 
-    }
-
-    server {
-        programArgument '--nogui'
+        server {
+            server()
+            programArgument '--nogui'
+        }
     }
 }
 
@@ -49,7 +49,6 @@ processResources {
 }
 
 dependencies {
-    implementation "net.neoforged:neoforge:${neo_version}"
     compileOnly project(":Common")
 }
 

@@ -17,7 +17,6 @@ public class WatchedPot {
     public static final Config CONFIG = loadService(Config.class);
 
     public static void init() {
-
     }
 
     public static void clientInit(Consumer<Runnable> taskQueue) {

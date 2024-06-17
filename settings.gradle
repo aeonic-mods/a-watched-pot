@@ -11,7 +11,7 @@ pluginManagement {
         }
         maven {
             name = 'Neoforge'
-            url = 'https://maven.neoforged.net/releases'
+            url = 'https://maven.neoforged.net/releases/'
         }
     }
 }
