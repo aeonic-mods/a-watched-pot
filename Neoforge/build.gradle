@@ -37,7 +37,7 @@ runs {
     }
 }
 
-// ignore neo's compile tasks, else it compiles our common classes into the base game
+//  ignore neo's compile tasks, else it compiles our common classes into the base game
 Spec<Task> notNeoTask = { Task it -> !it.name.startsWith("neo") } as Spec<Task>
 
 tasks.withType(JavaCompile).matching(notNeoTask).configureEach {
