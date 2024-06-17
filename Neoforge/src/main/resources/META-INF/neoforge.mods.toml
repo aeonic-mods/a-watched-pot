@@ -13,12 +13,12 @@ config="watchedpot.mixins.json"
 [[dependencies.watchedpot]] #optional
 modId = "neoforge" #mandatory
 type = 'required' #mandatory
-versionRange = "[20.4,)" #mandatory
+versionRange = "[21.0,)" #mandatory
 ordering = "NONE"
 side = "BOTH"
 [[dependencies.watchedpot]]
 modId = "minecraft"
 type = 'required'
-versionRange = "[1.20.4]"
+versionRange = "[1.21]"
 ordering = "NONE"
 side = "BOTH"

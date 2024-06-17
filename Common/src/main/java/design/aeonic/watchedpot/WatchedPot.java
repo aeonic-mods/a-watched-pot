@@ -1,6 +1,7 @@
 package design.aeonic.watchedpot;
 
 import design.aeonic.watchedpot.platform.Config;
+import net.minecraft.resources.ResourceLocation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -10,6 +11,7 @@ import java.util.function.Consumer;
 public class WatchedPot {
 
     public static final String MOD_ID = "watchedpot";
+    public static final ResourceLocation MOD_RL = ResourceLocation.fromNamespaceAndPath(MOD_ID, MOD_ID);
     public static final Logger LOGGER = LogManager.getLogger();
 
     public static final Config CONFIG = loadService(Config.class);
