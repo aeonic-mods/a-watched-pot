@@ -1,14 +1,17 @@
 plugins {
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '0.1.92'
+    id 'net.neoforged.moddev' version '2.0.59-beta'
 }
 
 repositories {
     mavenLocal()
 }
 
+logger.info(project as String)
+logger.info(rootProject as String)
+logger.info(rootProject.equals(project) as String)
 base {
-    archivesName = "${project.mod_name}-neoforge-${minecraft_version}"
+    archivesName = "${mod_name}-neoforge-${minecraft_version}"
 }
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)

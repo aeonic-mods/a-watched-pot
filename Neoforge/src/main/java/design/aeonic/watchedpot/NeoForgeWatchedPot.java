@@ -15,7 +15,7 @@ public class NeoForgeWatchedPot {
     public NeoForgeWatchedPot(IEventBus modBus, FMLModContainer ctn) {
         WatchedPot.init();
         modBus.addListener((FMLClientSetupEvent event) -> WatchedPot.clientInit(event::enqueueWork));
-        ctn.addConfig(new ModConfig(ModConfig.Type.SERVER, NeoForgeConfig.SERVER_SPEC, ctn));
+        ctn.registerConfig(ModConfig.Type.SERVER, NeoForgeConfig.SERVER_SPEC);
     }
 
 }

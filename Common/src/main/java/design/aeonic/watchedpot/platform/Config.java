@@ -1,11 +1,12 @@
 package design.aeonic.watchedpot.platform;
 
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 
 public interface Config {
 
-    boolean getUseWhitelist(Level level);
+    boolean getUseWhitelist(ServerLevel level);
 
-    boolean getInvertBehavior(Level level);
+    boolean getInvertBehavior(ServerLevel level);
 
 }

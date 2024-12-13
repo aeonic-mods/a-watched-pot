@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 public abstract class PlayerMixin extends Entity implements BlockWatcher {
 
     @Nullable
-    private BlockPos watchedPos = null;
+    private BlockPos watchedpot$watchedPos = null;
 
     public PlayerMixin(EntityType<?> type, Level level) {
         super(type, level);
@@ -27,17 +27,17 @@ public abstract class PlayerMixin extends Entity implements BlockWatcher {
 
     @Override
     @Nullable
-    public BlockPos getWatchedPos() {
-        return watchedPos;
+    public BlockPos watchedpot$getWatchedPos() {
+        return watchedpot$watchedPos;
     }
 
     @Inject(method = "tick", at = @At("TAIL"))
-    public void injectTick(CallbackInfo ci) {
+    public void watchedpot$injectTick(CallbackInfo ci) {
         HitResult res = pick(16, 0, false);
         if (res instanceof BlockHitResult blockHitResult) {
-            watchedPos = blockHitResult.getBlockPos();
+            watchedpot$watchedPos = blockHitResult.getBlockPos();
         } else {
-            watchedPos = null;
+            watchedpot$watchedPos = null;
         }
     }
 

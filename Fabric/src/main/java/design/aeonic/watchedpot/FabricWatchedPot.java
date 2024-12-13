@@ -6,8 +6,4 @@ public class FabricWatchedPot {
         WatchedPot.init();
     }
 
-    public void initializeClient() {
-        WatchedPot.clientInit(Runnable::run);
-    }
-
 }

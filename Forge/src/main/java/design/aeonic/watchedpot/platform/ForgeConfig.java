@@ -1,5 +1,6 @@
 package design.aeonic.watchedpot.platform;
 
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeConfigSpec;
 
@@ -20,12 +21,12 @@ public class ForgeConfig implements Config {
     }
 
     @Override
-    public boolean getUseWhitelist(Level unused) {
+    public boolean getUseWhitelist(ServerLevel unused) {
         return USE_WHITELIST.get();
     }
 
     @Override
-    public boolean getInvertBehavior(Level unused) {
+    public boolean getInvertBehavior(ServerLevel unused) {
         return INVERT_BEHAVIOR.get();
     }
 

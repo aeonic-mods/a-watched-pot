@@ -11,10 +11,10 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 @Mod.EventBusSubscriber(modid = WatchedPot.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ForgeWatchedPot {
 
-    public ForgeWatchedPot() {
+    public ForgeWatchedPot(FMLJavaModLoadingContext context) {
         WatchedPot.init();
-        FMLJavaModLoadingContext.get().getModEventBus().addListener((FMLClientSetupEvent event) -> WatchedPot.clientInit(event::enqueueWork));
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, ForgeConfig.SERVER_SPEC);
+        context.getModEventBus().addListener((FMLClientSetupEvent event) -> WatchedPot.clientInit(event::enqueueWork));
+        context.registerConfig(ModConfig.Type.SERVER, ForgeConfig.SERVER_SPEC);
     }
 
 }

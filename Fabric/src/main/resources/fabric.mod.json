@@ -16,9 +16,6 @@
   "entrypoints": {
     "main": [
       "design.aeonic.watchedpot.FabricWatchedPot::initializeCommon"
-    ],
-    "client": [
-      "design.aeonic.watchedpot.FabricWatchedPot::initializeClient"
     ]
   },
   "mixins": [
@@ -28,7 +25,7 @@
   "depends": {
     "fabricloader": ">=0.12",
     "fabric": "*",
-    "minecraft": "1.21",
+    "minecraft": ">=1.21.4",
     "java": ">=21"
   },
   "suggests": {

@@ -4,7 +4,7 @@ import design.aeonic.watchedpot.lib.BlockWatcher;
 import design.aeonic.watchedpot.lib.WatchedBlockGetter;
 import design.aeonic.watchedpot.lib.WatchedTickingBlockEntity;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.profiling.ProfilerFiller;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.TickingBlockEntity;
@@ -23,26 +23,28 @@ import java.util.List;
 @Mixin(Level.class)
 public abstract class LevelMixin implements LevelAccessor, WatchedBlockGetter {
 
-    @Nullable List<BlockPos> watchedBlocks = null;
+    @Nullable List<BlockPos> watchedpot$watchedBlocks = null;
 
     @Shadow @Final @Mutable protected List<TickingBlockEntity> blockEntityTickers;
     @Shadow private boolean tickingBlockEntities;
     @Shadow @Final private List<TickingBlockEntity> pendingBlockEntityTickers;
 
     @Override
-    public List<BlockPos> getWatchedBlocks() {
-        return watchedBlocks == null ? new ArrayList<>() : watchedBlocks;
+    public List<BlockPos> watchedpot$getWatchedBlocks() {
+        return watchedpot$watchedBlocks == null ? new ArrayList<>() : watchedpot$watchedBlocks;
     }
 
+    @SuppressWarnings("ConstantValue") // this is mixin land
     @Inject(method = "addBlockEntityTicker", at = @At("HEAD"), cancellable = true)
-    public void injectAddBlockEntityTicker(TickingBlockEntity tickingBlockEntity, CallbackInfo ci) {
-        (tickingBlockEntities ? pendingBlockEntityTickers : blockEntityTickers).add(new WatchedTickingBlockEntity((Level) ((Object) this), tickingBlockEntity));
+    public void watchedpot$injectAddBlockEntityTicker(TickingBlockEntity tickingBlockEntity, CallbackInfo ci) {
+        if (!(((Object) this) instanceof ServerLevel level)) return;
+        (tickingBlockEntities ? pendingBlockEntityTickers : blockEntityTickers).add(new WatchedTickingBlockEntity(level, tickingBlockEntity));
         if (ci.isCancellable()) ci.cancel();
     }
 
     @Inject(method = "tickBlockEntities", at = @At("HEAD"))
-    public void injectTickBlockEntitiesHead(CallbackInfo ci) {
-        watchedBlocks = players().stream().filter(player -> player instanceof BlockWatcher).map(player -> ((BlockWatcher) player).getWatchedPos()).toList();
+    public void watchedpot$injectTickBlockEntitiesHead(CallbackInfo ci) {
+        watchedpot$watchedBlocks = players().stream().filter(player -> player instanceof BlockWatcher).map(player -> ((BlockWatcher) player).watchedpot$getWatchedPos()).toList();
     }
 
 }

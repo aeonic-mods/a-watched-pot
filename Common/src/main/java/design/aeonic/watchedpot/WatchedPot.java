@@ -19,10 +19,6 @@ public class WatchedPot {
     public static void init() {
     }
 
-    public static void clientInit(Consumer<Runnable> taskQueue) {
-
-    }
-
     private static <T> T loadService(Class<T> clazz) {
         final T loadedService = ServiceLoader.load(clazz)
                 .findFirst()

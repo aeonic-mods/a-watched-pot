@@ -2,10 +2,11 @@ package design.aeonic.watchedpot.lib;
 
 import design.aeonic.watchedpot.WatchedPot;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.TickingBlockEntity;
 
-public record WatchedTickingBlockEntity(Level level, TickingBlockEntity ticker) implements TickingBlockEntity {
+public record WatchedTickingBlockEntity(ServerLevel level, TickingBlockEntity ticker) implements TickingBlockEntity {
 
     @Override
     public void tick() {

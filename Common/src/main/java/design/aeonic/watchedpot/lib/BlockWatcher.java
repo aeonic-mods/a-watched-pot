@@ -7,6 +7,6 @@ import javax.annotation.Nullable;
 public interface BlockWatcher {
 
     @Nullable
-    BlockPos getWatchedPos();
+    BlockPos watchedpot$getWatchedPos();
 
 }
